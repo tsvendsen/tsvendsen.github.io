@@ -1,0 +1,175 @@
+<div class="container">
+    <h1>Curriculum Vitae
+        <small>- Tommy Svendsen</small>
+    </h1>
+
+    <div class="row" >
+        <div class="col-lg-9 col-xs-12 col-md-9">
+
+            <div class="pull-left jumbotron">
+                <img src="img/DSC_0052.JPG" class="pull-right" style="width: 205px;">
+
+                <h2>About me</h2>
+
+                <p>{{cv.personalia.description}}</p>
+
+                <h3>Personal Skills</h3>
+
+                <div class="col-lg-6 col-xs-12" ng-repeat="personalSkill in cv.personalia.personalSkills">
+                    {{personalSkill}}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-12 col-md-3 page-break">
+            <div class="panel panel-info">
+                <div class="panel-heading">Personalia</div>
+                <div class="panel-body ">
+                    <div>{{cv.personalia.name}}</div>
+                    <div>{{cv.personalia.address}}</div>
+                    <div><a href="mailto:{{cv.personalia.email}}">{{cv.personalia.email}}</a></div>
+                    <div>{{cv.personalia.phone}}</div>
+                    <div>{{cv.personalia.birthdate}}</div>
+                    <div><a href="{{cv.personalia.linkedin}}">LinkedIn</a></div>
+                    <div class="visible-print"><a href="{{cv.personalia.onlinecv}}">This cv online</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-12 col-md-3">
+            <div class="panel panel-info">
+                <div class="panel-heading">In private</div>
+                <div class="panel-body ">
+                    <div class="row">
+                        <div class="col-xs-12">{{cv.personalia.personinfo}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-12 col-md-3">
+            <div class="panel panel-info">
+                <div class="panel-heading">Spoken / Written Languages</div>
+                <div class="panel-body ">
+                    <div class="row" ng-repeat="lang in cv.languages">
+                        <div class="pull-left col-xs-6">{{lang.name}}</div>
+                        <div class="pull-right col-xs-6">({{lang.proficciency}})</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row container page-break">
+        <div class="panel panel-default">
+            <div class="panel-heading">Experience</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-3 col-xs-6"><strong>Period</strong></div>
+                    <div class="col-lg-4 col-xs-6"><strong>Employer</strong></div>
+                </div>
+            </div>
+            <div class="panel-body" ng-repeat="experience in cv.experiences">
+                <div class="row">
+                    <div class="col-lg-3 col-xs-6"><strong>{{experience.timespan.from}} - {{experience.timespan.to |
+                        date: 'dd.MM.yy'}}</strong>
+                    </div>
+                    <div class="col-lg-4 col-xs-6"><strong>{{experience.employer}}</strong></div>
+                    <div class="col-xs-12">{{experience.description}}</div>
+                </div>
+                <blockquote ng-show="experience.projects">
+                    <p class="">{{experience.projectsTitle || 'Projects'}}</p>
+                </blockquote>
+                <div class="row" ng-repeat="project in experience.projects">
+
+                    <div class="col-lg-1">&nbsp;</div>
+                    <div class="col-lg-10 panel">
+                        <blockquote>
+                            <p>
+                                <small class="text-primary">{{project.name}}</small>
+                            </p>
+                        </blockquote>
+
+                        <div class="col-lg-3 col-xs-6">{{project.timespan.from}} - {{project.timespan.to | date:
+                            'dd.MM.yy'}}
+                        </div>
+                        <div class="col-lg-4 col-xs-6">{{project.customer}}</div>
+                        <div class="col-xs-12 well">{{project.description}}</div>
+                        <div class="row">
+                            <div class="col-xs-12">Main technologies</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-10 center-block">
+                            <span class="label label-primary primary"
+                                  style="display: inline-block; margin-right: 4px; text-transform: capitalize"
+                                  ng-repeat="technology in project.technologies">
+                                {{technology}}
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row container">
+        <div class="panel panel-default ">
+            <div class="panel-heading">Education</div>
+            <div class="panel-body" ng-repeat="education in cv.education">
+                <div class="row">
+                    <div class="col-lg-2 col-xs-6">{{education.timespan}}</div>
+                    <div class="col-lg-4 col-xs-6">{{education.school}}</div>
+                    <div class="col-xs-12">{{education.description}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row container">
+        <div class="panel panel-default">
+            <div class="panel-heading">Courses</div>
+            <div class="panel-body" ng-repeat="course in cv.courses">
+                <div class="row">
+                    <div class="col-xs-2">{{course.year}}</div>
+                    <div class="col-xs-6">{{course.title}}</div>
+                    <div class="col-xs-4">{{course.provider}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row container page-break" >
+
+
+        <div>
+            <h2>Technical Skills</h2>
+
+            <div>Skills listed are rated based on experience and profficiency.</div>
+            <div class="list-group">
+                <div class="list-group-item" ng-repeat="(area, skills) in cv.skills">
+                    <h4 style="text-transform: capitalize" class="list-group-item-heading">{{area}}</h4>
+
+                    <div class="row">
+                        <div style="text-align: center" class="list-group-item-text">
+                            <span class="col-xs-3 label label-default" ng-repeat="skill in skills"
+                                  style="font-size: 0.9em; padding: 8px; margin: 5px;">
+                                <div>{{skill}}</div>
+                                <rating class="hidden-xs" value="getRating(skill)" max="5" readonly="true"></rating>
+                                <span class="label"
+                                      ng-class="{'label-warning': getRating(skill) < 3, 'label-info': getRating(skill) === 3, 'label-success': (getRating(skill)>3)}">{{getProfficiency(skill)}}</span>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
