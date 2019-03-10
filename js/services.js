@@ -25,7 +25,7 @@ angular.module('myApp.services', []).
                 phone: "+47 41 48 58 27",
                 email: "tommysven@gmail.com",
                 linkedin: "http://www.linkedin.com/in/tommysvendsen",
-                onlinecv: "https://dl.dropboxusercontent.com/u/841415/cv/index.html#/cv",
+                onlinecv: "https://tsvendsen.github.io",
                 birthdate: "16.05.1980",
                 description: "I'm a very dedicated developer who enjoys all aspects of system development, from architecture design to implementing stuff in code. " +
                     "I strongly believe in TDD and work test-driven as much as possible. " +
